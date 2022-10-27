@@ -1,17 +1,25 @@
-console.log('Hello, World');
-const express = require('express')
 // import 'package:express/express.dart'
-const PORT = 3000;
+const express = require('express');
+const mongoose = require ('mongoose');
 
+// Import from other files
+const authRouter = require('./routes/auth');
+
+
+// INIT
+const PORT = 3000;
 const app = express();
 
-// CREATING NODE API
-app.get('/hello-world', (req, res) => {
-    res.send('hello world')
-});
-// GET, PUT, POST DELETE, UPDATE 
+// middleware
+app.use(authRouter); 
 
+// connections
+mongoose.connect().then (() => {
+    console.log('Connection Successful');
+}).catch(e => {
+    console.log(e);
+})
 
 app.listen(PORT, "0.0.0.0", () => {
-    console.log(`connected at port ${PORT}`);
+    console.log(`connected to port ${PORT}`);
 });
