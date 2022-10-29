@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     },
     email: {
         required: true,
-        type: string,
+        type: String,
         trim: true,
         validate: {
             validator: (value) => {
@@ -21,6 +21,13 @@ const userSchema = mongoose.Schema({
     password: {
         required: true,
         type: String,
+        trim: true,
+        // validate: {
+        //     validator: (value) => {
+        //         return value.length > 6;
+        //     },
+        //     message: 'Please enter long password',
+        // }
     },
     address: {
         type: String,
