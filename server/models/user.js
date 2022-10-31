@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-
+ 
 const userSchema = mongoose.Schema({
     name: {
         required: true,
         type: String,
         trim: true,
     },
-    email: {
+    email: { 
         required: true,
         type: String,
         trim: true,
@@ -18,10 +18,10 @@ const userSchema = mongoose.Schema({
             message: 'Please enter valid email address',
         }
     },
-    password: {
+    password: { 
         required: true,
         type: String,
-        trim: true,
+        // trim: true,
         // validate: {
         //     validator: (value) => {
         //         return value.length > 6;
