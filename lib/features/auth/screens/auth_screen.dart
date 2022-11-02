@@ -103,7 +103,13 @@ class _AuthScreenState extends State<AuthScreen> {
                         hintText: 'Password',
                       ),
                       const SizedBox(height: 10),
-                      CustomButton(text: 'Sign Up', onTap: () {})
+                      CustomButton(
+                          text: 'Sign Up',
+                          onTap: () {
+                            if (_signUpFormKey.currentState!.validate()) {
+                              signUpUser();
+                            }
+                          })
                     ],
                   ),
                 ),
@@ -128,12 +134,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 },
               ),
             ),
+            //sign in
             if (_auth == Auth.signin)
               Container(
                 padding: const EdgeInsets.all(8),
                 color: GlobalVariables.backgroundColor,
                 child: Form(
-                  key: _signUpFormKey,
+                  key: _signInFormKey,
                   child: Column(
                     children: [
                       const SizedBox(
@@ -149,7 +156,10 @@ class _AuthScreenState extends State<AuthScreen> {
                         hintText: 'Password',
                       ),
                       const SizedBox(height: 10),
-                      CustomButton(text: 'Sign In ', onTap: () { })
+                      CustomButton(
+                        text: 'Sign in ',
+                        onTap: () {},
+                      )
                     ],
                   ),
                 ),
