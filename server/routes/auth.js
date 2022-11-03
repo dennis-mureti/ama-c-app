@@ -34,22 +34,23 @@ authRouter.post('/api/signup', async (req, res) => {
 });
 
 // Sign In Route - we will use JWYT, bcrypt
-authRouter.post('api/signin', async (req, res) => {
+authRouter.post('/api/signin', async (req, res) => {
     try {
-        const{ email, passwrd } = req.body;
+        const{ email, password } = req.body;
         // now we find the user and check if exists
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({msg: 'User with this email does not exist!'});
         }
         // to check if the password matches
-        const isMatch = await bcryptjs.compare(passwrd, user.password);
+        const isMatch = await bcryptjs.compare(password, user.password);
         if (isMatch) {
             return res.status(400).json({ msg: "Incorrect password"});
         }
-        const token  = jwt.sign({id: user._id}, "passwordKey");
-        // nnow we send the token 
+        const token = jwt.sign({id: user._id}, "passwordKey");
+        // now we send the token 
         res.json({ token, ...user._doc })
+        
     } catch (e) {
         res.status(500).json({error: e.message})
     }
