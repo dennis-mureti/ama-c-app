@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-String uri = 'http://:3000';
+String uri = 'http://localhost:3000'; // you can replace the local host wiith IP address (ifnet config on terminal)
 
 class GlobalVariables {
 // COLORS
