@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
-  // sign up user
+  // sign up user   
   void signUpUser({
     required BuildContext context,
     required String email,

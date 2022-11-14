@@ -135,9 +135,11 @@ class _AuthScreenState extends State<AuthScreen> {
                 value: Auth.signin,
                 groupValue: _auth,
                 onChanged: (Auth? val) {
-                  setState(() {
-                    _auth = val!;
-                  });
+                  setState(
+                    () {
+                      _auth = val!;
+                    },
+                  );
                 },
               ),
             ),
