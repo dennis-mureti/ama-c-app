@@ -5,6 +5,7 @@ const bcryptjs = require("bcryptjs");
 const authRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const e = require("express");
+const auth = require("../middlewares/auth");
 
 authRouter.post('/api/signup', async (req, res) => {
     try { 
@@ -57,7 +58,7 @@ authRouter.post('/api/signin', async (req, res) => {
     }
 });
 
-//
+// verify token
 authRouter.post('/tokenIsValid', async (req, res) => {
     try{
         const token = req.header('x-auth-token');
@@ -67,12 +68,18 @@ authRouter.post('/tokenIsValid', async (req, res) => {
 
         const user = await user.findById(verified.id);
         if(!user) return res.json(false);
-        res.json(true); 
+        res.json(true);
     } catch {
-       res,statusbar(500).json({ error: e.message});
+       res.statusbar(500).json({ error: e.message});
     }
 })
-
+    
+// get user data
+authRouter.get('/', auth, async (req, res) =>  {
+    const user = await User.findById(req.user);
+    res.json({...user._doc, token: req.token})
+    console.log
+})
 
 // To enable use of functions from this file to other files
 module.exports = authRouter;

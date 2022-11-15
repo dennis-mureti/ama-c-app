@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'features/auth/screens/auth_screen.dart';
+import 'features/home/screens/home_screen.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -24,15 +25,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AuthService authService = AuthService();
+
   @override
   void initState() {
     super.initState();
+    authService.getUserData(context);
   }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( 
+    return MaterialApp(
       title: 'Amazon clone',
       theme: ThemeData(
           // This is the theme of your application.
@@ -53,7 +56,9 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.black,
               ))),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const AuthScreen(),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? const HomeScreen()
+          : const AuthScreen(),
     );
   }
 }
