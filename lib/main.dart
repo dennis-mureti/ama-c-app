@@ -1,5 +1,5 @@
-
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
+import 'package:amazon_clone_tutorial/features/auth/services/auth_service.dart';
 import 'package:amazon_clone_tutorial/providers/user_provider.dart';
 import 'package:amazon_clone_tutorial/router.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +11,28 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
-    ), 
+    ),
   ], child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthService authService = AuthService();
+  @override
+  void initState() {
+    super.initState();
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp( 
       title: 'Amazon clone',
       theme: ThemeData(
           // This is the theme of your application.
