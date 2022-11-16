@@ -12,7 +12,7 @@ const DB = "mongodb+srv://Dennis:Dennis123@cluster0.vcfrrti.mongodb.net/?retryWr
 
 // middleware
 app.use(express.json()); // To help handle distructuring
-app.use(authRouter); 
+app.use(authRouter);
 
 // connections
 mongoose.connect(DB).then(() => {
