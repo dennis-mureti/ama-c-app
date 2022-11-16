@@ -70,7 +70,7 @@ authRouter.post('/tokenIsValid', async (req, res) => {
         if(!user) return res.json(false);
         res.json(true);
     } catch {
-       res.statusbar(500).json({ error: e.message});
+       res.status(500).json({ error: e.message});
     }
 })
     

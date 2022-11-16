@@ -3,6 +3,8 @@ import 'package:amazon_clone_tutorial/features/home/screens/home_screen.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/account/screens/account_screen.dart';
+
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
   const BottomBar({Key? key}) : super(key: key);
@@ -18,9 +20,7 @@ class _BottomBarState extends State<BottomBar> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    const Center(
-      child: Text('Account Page'),
-    ),
+    const AccountScreen(),
     const Center(
       child: Text('Cart Page'),
     ),
