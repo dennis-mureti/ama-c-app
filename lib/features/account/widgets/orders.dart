@@ -1,4 +1,5 @@
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
+import 'package:amazon_clone_tutorial/features/account/widgets/single_product.dart';
 import 'package:flutter/material.dart';
 
 class Orders extends StatefulWidget {
@@ -9,6 +10,15 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
+  // temporary list
+  List list = [
+    {
+      'https://images.unsplash.com/photo-1664574654578-d5a6a4f447bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1664574654578-d5a6a4f447bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1664574654578-d5a6a4f447bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1664574654578-d5a6a4f447bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +41,7 @@ class _OrdersState extends State<Orders> {
             //
             Container(
               padding: const EdgeInsets.only(
-                left: 15,
+                right: 15,
               ),
               child: Text(
                 'See all',
@@ -41,6 +51,23 @@ class _OrdersState extends State<Orders> {
               ),
             ),
           ],
+        ),
+        // display orders
+        Container(
+          height: 170,
+          padding: const EdgeInsets.only(
+            left: 10,
+            top: 20,
+            right: 0,
+          ),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+              itemCount: list.length,
+              itemBuilder: (context, index) {
+                return SingleProduct(
+                  image: list[index],
+                );
+              }),
         )
       ],
     );
