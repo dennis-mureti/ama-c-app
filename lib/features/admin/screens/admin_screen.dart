@@ -1,8 +1,8 @@
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
+import 'package:amazon_clone_tutorial/features/admin/screens/posts_screen.dart';
 // import 'package:amazon_clone_tutorial/features/admin/screens/analtyics_screen.dart';
 // import 'package:amazon_clone_tutorial/features/admin/screens/orders_screen.dart';
-// import 'package:amazon_clone_tutorial/features/admin/screens/posts_screen.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({Key? key}) : super(key: key);
@@ -16,11 +16,11 @@ class _AdminScreenState extends State<AdminScreen> {
   double bottomBarWidth = 42;
   double bottomBarBorderWidth = 5;
 
-  // List<Widget> pages = [
-  //   const PostsScreen(),
+  List<Widget> pages = [
+    const PostsScreen(),
   //   const AnalyticsScreen(),
   //   const OrdersScreen(),
-  // ];
+  ];
 
   void updatePage(int page) {
     setState(() {
@@ -31,7 +31,7 @@ class _AdminScreenState extends State<AdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
+      appBar: PreferredSize( 
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
@@ -62,7 +62,7 @@ class _AdminScreenState extends State<AdminScreen> {
           ),
         ),
       ),
-      // body: pages[_page],
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         selectedItemColor: GlobalVariables.selectedNavBarColor,
