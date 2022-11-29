@@ -1,6 +1,7 @@
 // import 'package:express/express.dart'
 const express = require('express');
 const mongoose = require ('mongoose');
+const adminRouter = require('./routes/admin');
 
 // Import from other files
 const authRouter = require('./routes/auth');
@@ -13,6 +14,7 @@ const DB = "mongodb+srv://Dennis:Dennis123@cluster0.vcfrrti.mongodb.net/?retryWr
 // middleware
 app.use(express.json()); // To help handle distructuring
 app.use(authRouter);
+app.use(adminRouter);
 
 // connections
 mongoose.connect(DB).then(() => {

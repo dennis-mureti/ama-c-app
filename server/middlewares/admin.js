@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user')
-const User = require('../models/user');
 
 const admin = async (req, res, next) => {
     try {
@@ -20,4 +19,6 @@ const admin = async (req, res, next) => {
     } catch (err) {
         res.status(500).json({error: err.message});
     }
-}
+};
+
+module.exports = admin;
