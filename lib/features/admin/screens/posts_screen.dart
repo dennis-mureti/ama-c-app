@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:amazon_clone_tutorial/common/widgets/loader.dart';
 import 'package:amazon_clone_tutorial/features/account/widgets/single_product.dart';
 import 'package:amazon_clone_tutorial/features/admin/screens/add_product_screen.dart';
@@ -15,6 +17,7 @@ class PostsScreen extends StatefulWidget {
 class _PostsScreenState extends State<PostsScreen> {
   List<Product>? products = [];
   final AdminServices adminServices = AdminServices();
+
   @override
   void initState() {
     super.initState();
@@ -24,6 +27,17 @@ class _PostsScreenState extends State<PostsScreen> {
   fetchAllProducts() async {
     products = await adminServices.fetchAllProducts(context);
     setState(() {});
+  }
+
+  void deleteProduct(Product product, int index) {
+    adminServices.deleteProduct(
+      context: context,
+      product: product,
+      onSuccess: () {
+        products!.removeAt(index);
+        setState(() {});
+      },
+    );
   }
 
   void navigateToAddProduct() {
@@ -59,8 +73,8 @@ class _PostsScreenState extends State<PostsScreen> {
                             maxLines: 2,
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {},
+                        IconButton( 
+                          onPressed: () => deleteProduct(productData, index),
                           icon: const Icon(
                             Icons.delete_outline,
                           ),
