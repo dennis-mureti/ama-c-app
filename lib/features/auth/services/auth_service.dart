@@ -3,7 +3,6 @@ import 'package:amazon_clone_tutorial/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone_tutorial/constants/error_handling.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
 import 'package:amazon_clone_tutorial/constants/utils.dart';
-import 'package:amazon_clone_tutorial/features/home/screens/home_screen.dart';
 import 'package:amazon_clone_tutorial/models/user.dart';
 import 'package:amazon_clone_tutorial/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +20,14 @@ class AuthService {
   }) async {
     try {
       User user = User(
-          id: '',
-          name: name,
-          email: email,
-          password: password,
-          address: '',
-          type: '',
-          token: '');
+        id: '',
+        name: name,
+        email: email,
+        password: password,
+        address: '',
+        type: '',
+        token: '',
+      );
 
       http.Response res = await http.post(
         Uri.parse('$uri/api/signup'),
@@ -108,11 +108,11 @@ class AuthService {
 
       if (response == true) {
         // get user data
-        http.Response userRes = await http.get(Uri.parse("$uri/"),
-            headers: <String, String>{
-              'Content-Type': 'application/json: charset=UTF-8',
-              'x-auth-token': token
-            });
+        http.Response userRes =
+            await http.get(Uri.parse("$uri/"), headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': token
+        });
 
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.setUser(userRes.body);
