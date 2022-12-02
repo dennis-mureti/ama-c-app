@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 class SearchServices {
   Future<List<Product>> fetchSearchedProducts({
     required BuildContext context,
-    required String searchQuery, 
+    required String searchQuery,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Product> productList = [];
@@ -35,8 +35,7 @@ class SearchServices {
               ),
             );
           }
-          ;
-        },
+         },
       );
     } catch (e) {
       showSnackBar(context, e.toString());
