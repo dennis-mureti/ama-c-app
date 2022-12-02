@@ -44,4 +44,5 @@ adminRouter.post('/admin/delete-product', admin, async (req, res) => {
         res.status(500).json({console: e.message})
     }
 });
+
 module.exports = adminRouter;
