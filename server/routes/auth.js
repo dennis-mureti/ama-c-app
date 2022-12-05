@@ -59,26 +59,26 @@ authRouter.post('/api/signin', async (req, res) => {
 });
 
 // verify token
-authRouter.post('/tokenIsValid', async (req, res) => {
+authRouter.post("/tokenIsValid", async (req, res) => {
     try{
-        const token = req.header('x-auth-token');
+        const token = req.header("x-auth-token");
         if(!token) return res.json(false);
-        const verified = jwt.verify(token, 'passwordkey');
+        const verified = jwt.verify(token, "passwordkey");
         if(!verified) return res.json(false);
 
-        const user = await user.findById(verified.id);
+        const user = await User.findById(verified.id);
         if(!user) return res.json(false);
         res.json(true);
-    } catch {
+    } catch (e) {
        res.status(500).json({ error: e.message});
     }
 })
     
 // get user data
-authRouter.get('/', auth, async (req, res) =>  {
+authRouter.get("/", auth, async (req, res) =>  {
     const user = await User.findById(req.user);
     res.json({...user._doc, token: req.token})
-})
+});
 
 // To enable use of functions from this file to other files
 module.exports = authRouter;
