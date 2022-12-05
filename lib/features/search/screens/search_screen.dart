@@ -1,3 +1,6 @@
+import 'package:amazon_clone_tutorial/common/widgets/loader.dart';
+import 'package:amazon_clone_tutorial/features/search/services/search_services.dart';
+import 'package:amazon_clone_tutorial/models/product.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -10,14 +13,31 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  List<Product>? products;
+  final SearchServices searchServices = SearchServices();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchSearchedProduct();
+  }
+
+  fetchSearchedProduct() async {
+    products = await searchServices.fetchSearchedProducts(
+        context: context, searchQuery: widget.searchQuery);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          widget.searchQuery,
-        ),
-      ),
-    );
+    return products == null
+        ? const Loader()
+        : Scaffold(
+            body: Center(
+              child: Text(
+                widget.searchQuery,
+              ),
+            ),
+          );
   }
 }
