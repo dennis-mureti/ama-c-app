@@ -99,16 +99,30 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
-              children: [
-                Text(
-                  widget.product.id!,
-                ),
-                const Stars(rating: 4),
-              ],
-            )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    widget.product.id!,
+                  ),
+                  const Stars(rating: 4),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 10,
+              ),
+              child: Text(
+                widget.product.name,
+                style: const TextStyle(fontSize: 15),
+              ),
+            ),
           ],
         ),
       ),
