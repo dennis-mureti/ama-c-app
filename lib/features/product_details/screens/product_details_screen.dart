@@ -2,6 +2,7 @@ import 'package:amazon_clone_tutorial/common/widgets/stars.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
 import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
 import 'package:amazon_clone_tutorial/models/product.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -123,6 +124,40 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 style: const TextStyle(fontSize: 15),
               ),
             ),
+            CarouselSlider(
+              items: widget.product.images.map(
+                (i) {
+                  return Builder(
+                    builder: (BuildContext context) => Image.network(
+                      i,
+                      fit: BoxFit.cover,
+                      height: 200,
+                    ),
+                  );
+                },
+              ).toList(),
+              options: CarouselOptions(
+                viewportFraction: 1,
+                height: 300,
+              ),
+            ),
+            Container(
+              color: Colors.black12,
+              height: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: RichText(
+                text: TextSpan(
+                  text: 'Deal Price: ',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
