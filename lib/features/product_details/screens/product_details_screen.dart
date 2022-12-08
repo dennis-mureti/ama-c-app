@@ -155,9 +155,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
+                  children: [
+                    TextSpan(
+                      text: '\$${widget.product.price}',
+                      style: const TextStyle(
+                        fontSize: 22,
+                        color: Colors.red,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+                  ],
                 ),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(widget.product.description),
+            ),
           ],
         ),
       ),

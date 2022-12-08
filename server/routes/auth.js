@@ -1,10 +1,8 @@
-const { application } = require("express");
 const express = require ("express");
 const User = require("../models/user");
 const bcryptjs = require("bcryptjs");
 const authRouter = express.Router();
 const jwt = require("jsonwebtoken");
-const e = require("express");
 const auth = require("../middlewares/auth");
 
 authRouter.post('/api/signup', async (req, res) => {
@@ -64,7 +62,7 @@ authRouter.post("/tokenIsValid", async (req, res) => {
         const token = req.header("x-auth-token");
         if(!token) return res.json(false);
         const verified = jwt.verify(token, "passwordkey");
-        if(!verified) return res.json(false);
+        if (!verified) return res.json(false);
 
         const user = await User.findById(verified.id);
         if(!user) return res.json(false);

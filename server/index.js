@@ -19,7 +19,8 @@ app.use(adminRouter);
 app.use(productRouter);
 
 // connections
-mongoose.connect(DB).then(() => {
+mongoose.connect(DB)
+.then(() => {
     console.log('Connection Successful');
 })
 .catch((e) => {
