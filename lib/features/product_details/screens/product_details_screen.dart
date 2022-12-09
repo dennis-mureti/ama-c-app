@@ -1,3 +1,4 @@
+import 'package:amazon_clone_tutorial/common/widgets/custome_button.dart';
 import 'package:amazon_clone_tutorial/common/widgets/stars.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
 import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
@@ -172,6 +173,32 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Text(widget.product.description),
             ),
+            Container(
+              color: Colors.black12,
+              height: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: CustomButton(
+                text: 'Buy Now',
+                onTap: () {},
+                // color: const Color.fromRGBO(254, 216, 19, 1),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: CustomButton(
+                text: 'Add to Cart',
+                onTap: () {},
+                color: const Color.fromRGBO(254, 216, 19, 1),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Container(
+              color: Colors.black12,
+              height: 5,
+            ) ,
           ],
         ),
       ),
