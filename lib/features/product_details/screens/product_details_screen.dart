@@ -5,6 +5,7 @@ import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart
 import 'package:amazon_clone_tutorial/models/product.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   static const String routeName = '/product-details';
@@ -198,7 +199,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Container(
               color: Colors.black12,
               height: 5,
-            ) ,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                'Rate The Product',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            RatingBar.builder(
+                itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: GlobalVariables.secondaryColor,
+                    ),
+                onRatingUpdate: (rating) {})
           ],
         ),
       ),
