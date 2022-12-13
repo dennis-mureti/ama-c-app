@@ -35,7 +35,6 @@ class HomeServices {
               ),
             );
           }
-          ;
         },
       );
     } catch (e) {

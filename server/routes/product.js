@@ -1,6 +1,7 @@
 const express = require('express');
 const productRouter = express.Router();
-const auth = require('../middlewares/auth')
+const auth = require('../middlewares/auth');
+const Product = require('../models/product');
 
 // /api/products?category=Essentials -> will be the client side url so as to get category, and thus we use.query
 // /api/products:category -> in this case we can use params i.e req.params.category
@@ -26,5 +27,31 @@ productRouter.get('/api/products/search/:name', auth, async(req, res) => {
         res.status(500).json({error: e.message})
     }
 });
+
+// Create a post request route to rate the prooduct.
+productRouter.post('api/rate-product', auth, async(req, res) => {
+    try{
+        const {id, rating} = req.body;
+        let product = await Product.findById(id);
+
+        // run a for loop on all ratings that the product has.
+        for(let i  = 0; i < product.ratings.length; i++) {
+            if(product.ratings[i].userId == req.user) {
+                product.ratings.splice(i, 1);
+                break;
+            }
+        }
+        const ratingSchema = {
+            userId: req.user,
+            rating,
+        };
+
+        product.ratings.push(ratingSchema);
+        product = await product.save();
+        res.json(product);
+    } catch (e) {
+        res.status(500).json({error: e.message})
+    }
+})
 
 module.exports = productRouter; 
