@@ -76,7 +76,10 @@ class AuthService {
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
-              context, BottomBar.routeName, (route) => false);
+            context,
+            BottomBar.routeName,
+            (route) => false,
+          );
         },
       );
     } catch (e) {

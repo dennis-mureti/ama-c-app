@@ -6,6 +6,7 @@ const adminRouter = require('./routes/admin');
 // Import from other files
 const authRouter = require('./routes/auth');
 const productRouter = require('./routes/product');
+const userRouter = require('./routes/user');
 
 // INIT
 const PORT = 3000;
@@ -17,6 +18,7 @@ app.use(express.json()); // To help handle distructuring
 app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
+app.use(userRouter);
 
 // connections
 mongoose.connect(DB)

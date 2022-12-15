@@ -1,7 +1,7 @@
 const express = require('express');
 const productRouter = express.Router();
 const auth = require('../middlewares/auth');
-const Product = require('../models/product');
+const { Product } = require('../models/product');
 
 // /api/products?category=Essentials -> will be the client side url so as to get category, and thus we use.query
 // /api/products:category -> in this case we can use params i.e req.params.category
