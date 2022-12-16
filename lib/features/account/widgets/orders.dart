@@ -62,12 +62,13 @@ class _OrdersState extends State<Orders> {
           ),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-                return SingleProduct(
-                  image: list[index],
-                );
-              }),
+            itemCount: list.length,
+            itemBuilder: (context, index) {
+              return SingleProduct(
+                image: list[index],
+              );
+            },
+          ),
         )
       ],
     );
