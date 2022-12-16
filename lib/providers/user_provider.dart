@@ -1,7 +1,7 @@
 import 'package:amazon_clone_tutorial/models/user.dart';
 import 'package:flutter/material.dart';
 
-class   UserProvider extends ChangeNotifier {
+class UserProvider extends ChangeNotifier {
   User _user = User(
     id: '',
     name: '',
@@ -10,6 +10,7 @@ class   UserProvider extends ChangeNotifier {
     address: '',
     type: '',
     token: '',
+    cart: [],
   );
 
   User get user => _user;
@@ -18,6 +19,7 @@ class   UserProvider extends ChangeNotifier {
     _user = User.fromJson(user);
     notifyListeners();
   }
+
   void setUserFromModel(User user) {
     _user = user;
     notifyListeners();
