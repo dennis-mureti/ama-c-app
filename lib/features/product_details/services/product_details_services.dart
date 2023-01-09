@@ -27,7 +27,7 @@ class ProductDetailsServices {
         body: jsonEncode({
           'id': product.id!,
         }),
-      );
+      ); 
 
       httpErrorHandle(
         response: res,

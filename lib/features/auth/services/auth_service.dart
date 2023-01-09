@@ -112,11 +112,13 @@ class AuthService {
 
       if (response == true) {
         // get user data
-        http.Response userRes = await http.get(Uri.parse("$uri/"),
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-              'x-auth-token': token
-            });
+        http.Response userRes = await http.get(
+          Uri.parse("$uri/"),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': token
+          },
+        );
 
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.setUser(userRes.body);

@@ -136,7 +136,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
+              child: Row( 
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
