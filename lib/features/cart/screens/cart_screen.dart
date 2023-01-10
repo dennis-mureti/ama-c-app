@@ -1,5 +1,7 @@
 import 'package:amazon_clone_tutorial/common/widgets/custome_button.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
+import 'package:amazon_clone_tutorial/features/address/screens/address_screen.dart';
+import 'package:amazon_clone_tutorial/features/admin/screens/add_product_screen.dart';
 import 'package:amazon_clone_tutorial/features/cart/widgets/cart_product.dart';
 import 'package:amazon_clone_tutorial/features/cart/widgets/cart_subtotal.dart';
 import 'package:amazon_clone_tutorial/features/home/widgets/address_box.dart';
@@ -18,6 +20,10 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
+
+  void navigateToAddress() {
+    Navigator.pushNamed(context, AddressScreen.routeName);
   }
 
   @override
@@ -107,7 +113,7 @@ class _CartScreenState extends State<CartScreen> {
             padding: const EdgeInsets.all(8.0),
             child: CustomButton(
               text: 'Proceed to Buy (${user.cart.length} items)',
-              onTap: () {},
+              onTap: navigateToAddress,
               color: Colors.yellow[600],
             ),
           ),
@@ -121,7 +127,7 @@ class _CartScreenState extends State<CartScreen> {
             itemCount: user.cart.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return CartProduct(index: index); 
+              return CartProduct(index: index);
             },
           )
         ]),

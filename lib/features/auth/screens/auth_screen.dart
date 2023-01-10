@@ -111,7 +111,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                       const SizedBox(height: 10),
                       CustomButton(
-                          text: 'Sign Up',
+                          text: 'Sign Up', 
                           onTap: () {
                             if (_signUpFormKey.currentState!.validate()) {
                               signUpUser();
@@ -120,7 +120,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ],
                   ),
                 ),
-              ),
+               ),
             // sign in radio
             ListTile(
               tileColor: _auth == Auth.signin
