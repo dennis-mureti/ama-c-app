@@ -2,7 +2,6 @@
 const express = require('express');
 const mongoose = require ('mongoose');
 const adminRouter = require('./routes/admin');
-
 // Import from other files
 const authRouter = require('./routes/auth');
 const productRouter = require('./routes/product');
@@ -27,7 +26,7 @@ mongoose.connect(DB)
 })
 .catch((e) => {
     console.log(e);
-}); 
+});
 
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Connected to port ${PORT}`);

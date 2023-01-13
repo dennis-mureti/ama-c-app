@@ -5,7 +5,7 @@ const authRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const auth = require("../middlewares/auth");
 
-authRouter.post('/api/signup', async (req, res) => {
+authRouter.post('/api/signup', async ( req, res ) => {
     try { 
     const {name, email, password} = req.body;  // get the data fom the client
     
@@ -21,7 +21,7 @@ authRouter.post('/api/signup', async (req, res) => {
 
     let user = new User({
         email,
-        password: hashedPassword,
+        password: hashedPassword,   
         name,
     });
     user = await user.save(); 
@@ -69,7 +69,7 @@ authRouter.post("/tokenIsValid", async (req, res) => {
         res.json(true);
     } catch (e) {
        res.status(500).json({ error: e.message});
-    }
+    } 
 })
     
 // get user data

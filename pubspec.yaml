@@ -73,7 +73,7 @@ flutter:
   assets:
     - assets/images/
     - assets/applepay.json
-    - assets/gpay.jso n
+    - assets/gpay.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

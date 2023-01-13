@@ -34,6 +34,7 @@ class _AddressScreenState extends State<AddressScreen> {
   }
 
   void onApplePayResult(res) {}
+  void onGooglePayResult(res) {}
 
   @override
   Widget build(BuildContext context) {
@@ -112,10 +113,21 @@ class _AddressScreenState extends State<AddressScreen> {
                 ),
               ),
               ApplePayButton(
+                width: double.infinity,
+                style: ApplePayButtonStyle.whiteOutline,
+                type: ApplePayButtonType.buy,
                 paymentConfigurationAsset: 'applepay.json',
                 onPaymentResult: onApplePayResult,
                 paymentItems: paymentItems,
-              )
+                margin: const EdgeInsets.only(top: 15),
+                height: 50,
+              ),
+              const SizedBox(height: 10),
+              GooglePayButton(
+                paymentConfigurationAsset: 'gpay.json',
+                onPaymentResult: onGooglePayResult,
+                paymentItems: paymentItems,
+              ),
             ],
           ),
         ),
