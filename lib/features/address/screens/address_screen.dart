@@ -2,6 +2,7 @@ import 'package:amazon_clone_tutorial/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone_tutorial/common/widgets/custome_button.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
 import 'package:amazon_clone_tutorial/constants/utils.dart';
+import 'package:amazon_clone_tutorial/features/address/services/address_services.dart';
 import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
 import 'package:amazon_clone_tutorial/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class _AddressScreenState extends State<AddressScreen> {
 
   String addressToBeUsed = "";
   List<PaymentItem> paymentItems = [];
+  final AddressServices addressServices = AddressServices();
 
   @override
   void initState() {
@@ -49,7 +51,13 @@ class _AddressScreenState extends State<AddressScreen> {
     cityController.dispose();
   }
 
-  void onApplePayResult(res) {}
+  void onApplePayResult(res) {
+    if (Provider.of<UserProvider>(context).user.address.isEmpty) {
+      addressServices.saveUserAddress(
+          context: context, address: addressToBeUsed);
+    }
+  }
+
   void onGooglePayResult(res) {}
 
   void payPressed(String addressFromProvider) {
@@ -72,7 +80,6 @@ class _AddressScreenState extends State<AddressScreen> {
     } else {
       showSnackBar(context, 'ERROR');
     }
-    print(addressToBeUsed);
   }
 
   @override
