@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class CategoryDealsScreen extends StatefulWidget {
   static const String routeName = '/category-deals';
   final String category;
-  CategoryDealsScreen({Key? key, required this.category}) : super(key: key);
+  const CategoryDealsScreen({Key? key, required this.category}) : super(key: key);
 
   @override
   State<CategoryDealsScreen> createState() => _CategoryDealsScreenState();

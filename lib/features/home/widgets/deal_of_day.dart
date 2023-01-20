@@ -38,7 +38,7 @@ class _DealOfDayState extends State<DealOfDay> {
         : product!.name.isEmpty
             ? const SizedBox()
             : GestureDetector(
-              onTap: navigateToDetailsScreen,
+                onTap: navigateToDetailsScreen,
                 child: Column(
                   children: [
                     Container(
@@ -51,7 +51,6 @@ class _DealOfDayState extends State<DealOfDay> {
                     ),
                     Image.network(
                       product!.images[0],
-                      // 'https://images.unsplash.com/photo-1664575196079-9ac04582854b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
                       height: 235,
                       fit: BoxFit.fitHeight,
                     ),
@@ -81,34 +80,12 @@ class _DealOfDayState extends State<DealOfDay> {
                               .map(
                                 (e) => Image.network(
                                   e,
-                                  // 'https://images.unsplash.com/photo-1661956601349-f61c959a8fd4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
                                   fit: BoxFit.fitWidth,
                                   width: 100,
                                   height: 100,
                                 ),
                               )
-                              .toList()
-
-                          // Image.network(
-                          //   'https://images.unsplash.com/photo-1661956601349-f61c959a8fd4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-                          //   fit: BoxFit.fitWidth,
-                          //   width: 100,
-                          //   height: 100,
-                          // ),
-                          // Image.network(
-                          //   'https://images.unsplash.com/photo-1661956601349-f61c959a8fd4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-                          //   fit: BoxFit.fitWidth,
-                          //   width: 100,
-                          //   height: 100,
-                          // ),
-                          // Image.network(
-                          //   'https://images.unsplash.com/photo-1661956601349-f61c959a8fd4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-                          //   fit: BoxFit.fitWidth,
-                          //   width: 100,
-                          //   height: 100,
-                          // )
-
-                          ),
+                              .toList()),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(

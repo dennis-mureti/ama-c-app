@@ -1,9 +1,7 @@
 import 'package:amazon_clone_tutorial/common/widgets/custom_textfield.dart';
-import 'package:amazon_clone_tutorial/common/widgets/custome_button.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
 import 'package:amazon_clone_tutorial/constants/utils.dart';
 import 'package:amazon_clone_tutorial/features/address/services/address_services.dart';
-import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
 import 'package:amazon_clone_tutorial/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:pay/pay.dart';
@@ -52,7 +50,10 @@ class _AddressScreenState extends State<AddressScreen> {
   }
 
   void onApplePayResult(res) {
-    if (Provider.of<UserProvider>(context).user.address.isEmpty) {
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
       addressServices.saveUserAddress(
           context: context, address: addressToBeUsed);
     }
@@ -64,7 +65,10 @@ class _AddressScreenState extends State<AddressScreen> {
   }
 
   void onGooglePayResult(res) {
-    if (Provider.of<UserProvider>(context).user.address.isEmpty) {
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
       addressServices.saveUserAddress(
           context: context, address: addressToBeUsed);
     }
@@ -99,8 +103,8 @@ class _AddressScreenState extends State<AddressScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // var address = context.watch<UserProvider>().user.address;
-    var address = '101 Fake Street';
+    var address = context.watch<UserProvider>().user.address;
+    // var address = '101 Fake Street';
 
     return Scaffold(
       appBar: PreferredSize(
