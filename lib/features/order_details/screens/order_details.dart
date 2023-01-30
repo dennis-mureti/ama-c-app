@@ -2,6 +2,7 @@ import 'package:amazon_clone_tutorial/constants/global_variables.dart';
 import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
 import 'package:amazon_clone_tutorial/models/order.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
   static const String routeName = '/order-details';
@@ -117,7 +118,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                 ),
                 child: Column(
                   children: [
-                    Text('Order Date: ${widget.order.orderedAt}'), 
+                    Text('Order Date: ${DateFormat().format(
+                      DateTime.fromMillisecondsSinceEpoch(
+                          widget.order.orderedAt),
+                    )}'),
                   ],
                 ),
               )
