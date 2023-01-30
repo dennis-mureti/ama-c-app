@@ -166,11 +166,80 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                               Text(
                                 widget.order.products[i].name,
                                 style: const TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.bold),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               Text(
                                 'Qty: ${widget.order.quantity[i]}',
                               )
+                            ],
+                          ))
+                        ],
+                      )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Tracking',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Container(
+                // width: double.infinity,
+                // padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black12,
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    for (int i = 0; i < widget.order.products.length; i++)
+                      Row(
+                        children: [
+                          Image.network(
+                            widget.order.products[i].images[0],
+                            height: 120,
+                            width: 120,
+                          ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                              child: Stepper(
+                            controlsBuilder: (context, details) {
+                              return const SizedBox();
+                            },
+                            steps: [
+                              Step(
+                                title: const Text('Pending'),
+                                content: const Text(
+                                  'Your Order is yet to be delivered.',
+                                ),
+                              ),
+                              Step(
+                                title: const Text('Completed'),
+                                content: const Text(
+                                  'Your Order has been delivered, you are yet to sign.',
+                                ),
+                              ),
+                              Step(
+                                title: const Text('Received'),
+                                content: const Text(
+                                  'Your Order has been delivered and signed by you.',
+                                ),
+                              ),
+                              Step(
+                                title: const Text('Delivered'),
+                                content: const Text(
+                                  'Your Order has been delivered and signed by you!',
+                                ),
+                              ),
                             ],
                           ))
                         ],
