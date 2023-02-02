@@ -28,6 +28,10 @@ mongoose.connect(DB)
     console.log(e);
 });
 
+// app.listen(PORT, "10.0.2.2", () => {
+//     console.log(`Connected to port ${PORT}`);
+// });
+
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Connected to port ${PORT}`);
 });
