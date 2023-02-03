@@ -81,16 +81,28 @@ adminRouter.get('/admin/analytics', admin, async (req,res) => {
                 totalEarnings += orders[i].products[j].quantity * orders[i].products[j].product.price 
             }
         }
-
+        //  CATEOGORY WISE ORDER FETCHING
+        let mobileEarnings = await fetchCategoryWiseProduct('Mobiles');
+        let essentialEarnings = await fetchCategoryWiseProduct('Essentials');
+        let appliancesEarnings = await fetchCategoryWiseProduct('Appliances');
+        let booksEarnings = await fetchCategoryWiseProduct('Books');
+        let fashionEarnings = await fetchCategoryWiseProduct('Fashion'); 
     } catch (e) {
         res.status(500).json({erroor: e.message});
     }
 });
 
 async function fetchCategoryWiseProduct (category) {
+    let earnings = 0;
     let categoryOrders = await Order.find({
         'products.product.category': category,
     });
+    for(let i=0; i<categoryOrders.length; i++){
+        for(let j=0; j<categoryOrders[i].products.length; j++){
+            totalEarnings += categoryOrders[i].products[j].quantity * categoryOrders[i].products[j].product.price 
+        }
+    }
+    return earnings;
 }
 
 module.exports = adminRouter;
