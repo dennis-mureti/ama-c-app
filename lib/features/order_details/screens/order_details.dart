@@ -1,5 +1,6 @@
 import 'package:amazon_clone_tutorial/common/widgets/custome_button.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
+import 'package:amazon_clone_tutorial/features/admin/services/admin_services.dart';
 import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
 import 'package:amazon_clone_tutorial/models/order.dart';
 import 'package:amazon_clone_tutorial/models/user.dart';
@@ -22,6 +23,7 @@ class OrderDetailsScreen extends StatefulWidget {
 
 class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   int currentStep = 0;
+  final AdminServices adminServices = AdminServices();
 
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
@@ -31,6 +33,19 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   void initState() {
     super.initState();
     currentStep = widget.order.status;
+  }
+
+  // !!! ONLY FOR ADMIN !!!
+  void changeOrderStatus(int status) {
+    adminServices.changeOrderStatus(
+        context: context,
+        status: status + 1,
+        order: widget.order,
+        onSuccess: () {
+          setState(() {
+            currentStep += 1;
+          });
+        });
   }
 
   @override
@@ -230,7 +245,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                               controlsBuilder: (context, details) {
                                 if (user.type == 'admin') {
                                   return CustomButton(
-                                      text: 'Done', onTap:,);
+                                    text: 'Done',
+                                    onTap: () => changeOrderStatus(
+                                      details.currentStep,
+                                    ),
+                                  );
                                 }
                                 return const SizedBox();
                               },
