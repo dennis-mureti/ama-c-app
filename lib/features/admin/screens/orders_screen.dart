@@ -1,6 +1,7 @@
 import 'package:amazon_clone_tutorial/common/widgets/loader.dart';
 import 'package:amazon_clone_tutorial/features/account/widgets/single_product.dart';
 import 'package:amazon_clone_tutorial/features/admin/services/admin_services.dart';
+import 'package:amazon_clone_tutorial/features/order_details/screens/order_details.dart';
 import 'package:amazon_clone_tutorial/models/order.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   fetchOrders() async {
     orders = await adminServices.fetchAllOrders(context);
+    setState(() {});
   }
 
   @override
@@ -34,10 +36,19 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 crossAxisCount: 2),
             itemBuilder: (context, index) {
               final orderData = orders![index];
-              return SizedBox(
-                height: 140,
-                child: SingleProduct(
-                  image: orderData.products[0].images[0],
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    OrderDetailsScreen.routeName,
+                    arguments: orderData,
+                  );
+                },
+                child: SizedBox(
+                  height: 140,
+                  child: SingleProduct(
+                    image: orderData.products[0].images[0],
+                  ),
                 ),
               );
             },

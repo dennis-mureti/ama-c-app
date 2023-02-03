@@ -1,8 +1,12 @@
+import 'package:amazon_clone_tutorial/common/widgets/custome_button.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
 import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
 import 'package:amazon_clone_tutorial/models/order.dart';
+import 'package:amazon_clone_tutorial/models/user.dart';
+import 'package:amazon_clone_tutorial/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
   static const String routeName = '/order-details';
@@ -31,6 +35,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -223,6 +228,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             child: Stepper(
                               currentStep: currentStep,
                               controlsBuilder: (context, details) {
+                                if (user.type == 'admin') {
+                                  return CustomButton(
+                                      text: 'Done', onTap:,);
+                                }
                                 return const SizedBox();
                               },
                               steps: [
