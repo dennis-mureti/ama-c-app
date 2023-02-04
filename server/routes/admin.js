@@ -84,9 +84,19 @@ adminRouter.get('/admin/analytics', admin, async (req,res) => {
         //  CATEOGORY WISE ORDER FETCHING
         let mobileEarnings = await fetchCategoryWiseProduct('Mobiles');
         let essentialEarnings = await fetchCategoryWiseProduct('Essentials');
-        let appliancesEarnings = await fetchCategoryWiseProduct('Appliances');
+        let applianceEarnings = await fetchCategoryWiseProduct('Appliances');
         let booksEarnings = await fetchCategoryWiseProduct('Books');
         let fashionEarnings = await fetchCategoryWiseProduct('Fashion'); 
+
+        let earnings = {
+            totalEarnings,
+            mobileEarnings,
+            essentialEarnings,
+            applianceEarnings,
+            booksEarnings,
+            fashionEarnings
+        };
+        res.json(earnings); 
     } catch (e) {
         res.status(500).json({erroor: e.message});
     }
