@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
+// String uri =
+//     'http://localhost:3000'; // you can replace the local host wiith IP address (ifnet config on terminal)
+
 String uri =
-    'http://localhost:3000'; // you can replace the local host wiith IP address (ifnet config on terminal)
+    '192.168.0.13';
 
 class GlobalVariables {
 // COLORS
   static const appBarGradient = LinearGradient(
     colors: [
-      Color.fromARGB(255, 29, 201, 192),
+      Color.fromARGB(255, 29, 201, 192),   
       Color.fromARGB(255, 125, 221, 216),
     ],
     stops: [0.5, 1.0],
